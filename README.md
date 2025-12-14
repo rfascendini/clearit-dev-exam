@@ -159,16 +159,6 @@ php artisan route:list
 
 ---
 
-## Notes / Possible Improvements
-
-- Use Policies and Gates for authorization
-- Add background queues for notifications
-- Improve file validation by ticket type
-- Add pagination and filters
-- Add automated tests
-
----
-
 ## Author
 
-Technical test implementation for Clearit by Freightos.
+Technical test implementation for Clearit by Freightos by Renzo Fascendini.
