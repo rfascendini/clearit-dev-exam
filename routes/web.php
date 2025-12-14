@@ -8,6 +8,7 @@ use App\Http\Controllers\UserTicketController;
 use App\Http\Controllers\AgentTicketController;
 use App\Http\Controllers\TicketDocumentController;
 use App\Http\Controllers\DocumentRequestController;
+use App\Http\Controllers\NotificationController;
 
 /*_____________Public____________*/
 Route::get('/', function () {
@@ -40,22 +41,14 @@ Route::middleware(['auth'])->group(function () {
 
 
     /*_____________Notifications_____________*/
-    Route::get('/notifications', function () {
-        return view('notifications.index', [
-            'notifications' => auth()->user()->notifications()->latest()->get(),
-        ]);
-    })->name('notifications.index');
+    Route::get('/notifications', [NotificationController::class, 'index'])
+        ->name('notifications.index');
 
-    Route::post('/notifications/{id}/read', function (string $id) {
-        $notification = auth()->user()->notifications()->where('id', $id)->firstOrFail();
-        $notification->markAsRead();
-        return redirect()->route('notifications.index');
-    })->name('notifications.read');
+    Route::post('/notifications/{id}/read', [NotificationController::class, 'read'])
+        ->name('notifications.read');
 
-    Route::post('/notifications/read-all', function () {
-        auth()->user()->unreadNotifications->markAsRead();
-        return redirect()->route('notifications.index');
-    })->name('notifications.readAll');
+    Route::post('/notifications/read-all', [NotificationController::class, 'readAll'])
+        ->name('notifications.readAll');
 
     /*_____________USER routes_____________*/
     Route::middleware(['role:user'])->group(function () {
