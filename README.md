@@ -105,12 +105,12 @@ Access the application through the local development URL, usually http://127.0.0
 After seeding the database, you can log in using the following credentials.
 
 ### User
-- Email: test@example.com
-- Password: password
+- Email: user@clearit.com
+- Password: user123
 
 ### Agent
-- Email: agent@example.com
-- Password: password
+- Email: agent@clearit.com
+- Password: agent123
 
 ---
 
